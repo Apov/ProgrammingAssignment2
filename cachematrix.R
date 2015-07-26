@@ -1,15 +1,31 @@
-## Put comments here that give an overall description of what your
-## functions do
+## These two functions serve to compute the inverse of a matrix.
+## Both function accomplish this task, but the makeCacheMatrix
+## function stores its solution. Then the cacheSolve function
+## will print the stored solution from makeCacheMatrix, or if it
+## does not exist, it will compute the inverse of the matrix.
 
-## Write a short comment describing this function
 
 makeCacheMatrix <- function(x = matrix()) {
-
+  matrix_1 <<- solve(x) # Here the "<<-" operater assigns matrix_1
+                        # to the global environment
+  matrix_1
 }
 
 
-## Write a short comment describing this function
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+    if (!exists("matrix_1")) { # Here the function looks to see if 
+                               # the stored matrix from
+                               # makeCacheMatrix exists
+      
+      matrix_2 <- solve(x)     # If it doesn't exist, it computes
+                               # the inverse
+      
+      print("Computing Inverse")
+      matrix_2
+    } else {
+      print("Getting Cached Matrix")
+      matrix_1                 # If it does, then it prints that
+                               # stored inverse
+    }
 }
